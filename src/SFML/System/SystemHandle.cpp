@@ -22,40 +22,32 @@
 //
 ////////////////////////////////////////////////////////////
 
-#ifndef SFML_SYSTEM_HPP
-#define SFML_SYSTEM_HPP
-
 ////////////////////////////////////////////////////////////
 // Headers
 ////////////////////////////////////////////////////////////
-
-#include <SFML/Config.hpp>
-#include <SFML/System/Clock.hpp>
-#include <SFML/System/Err.hpp>
-#include <SFML/System/FileInputStream.hpp>
-#include <SFML/System/InputStream.hpp>
-#include <SFML/System/Lock.hpp>
-#include <SFML/System/MemoryInputStream.hpp>
-#include <SFML/System/Mutex.hpp>
-#include <SFML/System/NonCopyable.hpp>
-#include <SFML/System/Sleep.hpp>
-#include <SFML/System/String.hpp>
 #include <SFML/System/SystemHandle.hpp>
-#include <SFML/System/Thread.hpp>
-#include <SFML/System/ThreadLocal.hpp>
-#include <SFML/System/ThreadLocalPtr.hpp>
-#include <SFML/System/Time.hpp>
-#include <SFML/System/Utf.hpp>
-#include <SFML/System/Vector2.hpp>
-#include <SFML/System/Vector3.hpp>
 
-#endif // SFML_SYSTEM_HPP
+#if defined(SFML_SYSTEM_WINDOWS)
+    #define VC_EXTRALEAN
+    #define WIN32_LEAN_AND_MEAN
+    #include <Windows.h>
+#else
+    #include <SFML/System/Android/Activity.hpp>
+#endif
 
+
+namespace sf
+{
 ////////////////////////////////////////////////////////////
-/// \defgroup system System module
-///
-/// Base module of SFML, defining various utilities. It provides
-/// vector classes, Unicode strings and conversion functions,
-/// threads and mutexes, timing classes.
-///
-////////////////////////////////////////////////////////////
+SystemHandle getSystemHandle()
+{
+#if defined(SFML_SYSTEM_WINDOWS)
+    return GetCurrentProcess();
+#elif defined(SFML_SYSTEM_ANDROID)
+    return priv::getActivity()->activity;
+#else
+    return 0;
+#endif
+}
+
+} // namespace sf

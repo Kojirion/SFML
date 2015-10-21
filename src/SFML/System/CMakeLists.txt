@@ -20,6 +20,8 @@ set(SRC
     ${SRCROOT}/String.cpp
     ${INCROOT}/String.hpp
     ${INCROOT}/String.inl
+    ${SRCROOT}/SystemHandle.cpp
+    ${INCROOT}/SystemHandle.hpp
     ${SRCROOT}/Thread.cpp
     ${INCROOT}/Thread.hpp
     ${INCROOT}/Thread.inl
