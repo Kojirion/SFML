@@ -8,6 +8,7 @@ SET(SRC
     "${SRCROOT}/Vector.cpp"
     "${SRCROOT}/Rect.cpp"
     "${SRCROOT}/Font.cpp"
+    "${SRCROOT}/CircleShape.cpp"
 )
 
 message(${PROJECT_SOURCE_DIR})
