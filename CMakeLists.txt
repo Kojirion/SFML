@@ -225,6 +225,9 @@ if(SFML_BUILD_DOC)
     add_subdirectory(doc)
 endif()
 
+add_subdirectory(extlibs/benchmark)
+add_subdirectory(benchmark)
+
 # setup the install rules
 if(NOT SFML_BUILD_FRAMEWORKS)
     install(DIRECTORY include

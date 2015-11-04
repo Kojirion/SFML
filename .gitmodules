@@ -1,0 +1,3 @@
+[submodule "extlibs/benchmark"]
+	path = extlibs/benchmark
+	url = https://github.com/google/benchmark.git
